@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Academy Garden</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Diphylleia&family=Fleur+De+Leah&family=Gowun+Batang&family=Jua&family=Song+Myung&display=swap');
+        body {
+            background-color: #000; /* 텍스트가 잘 보이도록 검은 배경 */
+            margin: 0;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            font-family: sans-serif;
+        }
+
+        /* 텍스트 공통 스타일 */
+        .fade-text {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: lighter;
+            opacity: 0; /* 처음에는 안 보이게 설정 */
+            font-family: "Gowun Batang", serif;
+            
+            /* 애니메이션 설정: 이름(fade-in-out), 지속시간(2초), 무한반복, 부드럽게 */
+            animation: fade-in-out 2s 1 ease-in-out;
+        }
+
+        /* 각 텍스트의 개별 위치 및 지연 시간 설정 */
+        .text1 { top: 20%; left: 15%; animation-delay: 0s; }
+        .text2 { top: 50%; left: 60%; animation-delay: 2s; }
+        .text3 { top: 80%; left: 30%; animation-delay: 4s; font-size: 90px; }
+        .text4 { top: 40%; left: 27%; animation-delay: 6s; font-size: 180px;
+          background: #0E26AD;
+          background: linear-gradient(136deg, rgba(14, 38, 173, 1) 0%, rgba(240, 50, 17, 1) 50%, rgba(143, 60, 46, 1) 100%);
+          color: transparent; 
+          -webkit-background-clip: text;
+          
+}
+
+        /* 애니메이션 정의: 나타났다(20%~80%) 사라짐(0%, 100%) */
+        @keyframes fade-in-out {
+            0%, 100% {
+                opacity: 0;
+                transform: translateY(10px); /* 살짝 아래에서 시작 */
+            }
+            20%, 80% {
+                opacity: 1;
+                transform: translateY(0); /* 제자리에서 보임 */
+            }
+        }
+/* 2. 선을 담을 컨테이너 (여기서는 body 전체를 사용) */
+        .line-container {
+            position: relative; /* 가상 요소의 위치 기준점 */
+            width: 100%;
+            height: 100vh; /* 뷰포트 높이 100% */
+            overflow: hidden; /* 혹시 모를 스크롤바 방지 */
+            filter: blur(4px);
+            
+        }
+
+        /* 3. 핵심: 세로 줄 만들기 (가상 요소 활용) */
+        .line-container::before {
+            content: ''; /* 가상 요소 필수 속성 */
+            position: absolute;
+            
+            /* 위치 및 크기 설정 */
+            top: 0;
+            left: 20%; /* 화면 중앙에 배치 (원하는 위치로 변경 가능) */
+            /* transform: translateX(-50%); -> 중앙 정렬을 완벽하게 하려면 주석 해제 */
+            
+            width: 9px; /* 'medium' 굵기: 보통 3~5px 정도를 사용합니다. */
+            height: 30%; /* 화면 전체 높이만큼 선을 그림 */
+            background-color: #ab0510; /* 요청하신 색상 코드 */
+
+            /* 4. 애니메이션 준비 상태 설정 */
+            /* Y축(세로) 방향으로 크기를 0으로 만듦 (안 보이는 상태) */
+            transform: scaleY(0); 
+            /* 변형(확대)의 기준점을 '위쪽(top)'으로 설정 */
+            transform-origin: top; 
+
+            /* 5. 애니메이션 적용 */
+            /* 이름: revealLine, 지속시간: 12초, 속도: 부드럽게 시작해서 끝남, 왕복 후 끝냄: alternate */
+            animation: revealLine 12s ease-in-out alternate;
+            
+            /* (선택사항) 시작 딜레이를 주고 싶다면 아래 주석 해제 */
+            animation-delay: 4s; 
+        }
+
+        /* 6. 애니메이션 정의 (키프레임) */
+        @keyframes revealLine {
+            from {
+                /* 시작: 세로 크기 0 */
+                transform: scaleY(0);
+            }
+            to {
+                /* 끝: 세로 크기 1 (원래 크기인 100%가 됨) */
+                transform: scaleY(1);
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="fade-text text1">세계 최고의 명문 학교</div>
+    <div class="fade-text text2">명예 미래 권력 힘</div>
+    <div class="fade-text text3">이곳에서 모두 얻으리</div>
+    <div class="fade-text text4">루미너스 아카데미</div>
+
+    <div class="line-container">
+        </div>
+    
+
+</body>
+</html>
